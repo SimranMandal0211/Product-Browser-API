@@ -5,7 +5,8 @@ const PORT = process.env.PORT || 3000;
 
 async function start(){
     await connectDB();
-    console.log(`Ready. (App wiring comes in a later step.)`);
+
+    console.log('Ready.....');
     process.exit(0);
 }
 
