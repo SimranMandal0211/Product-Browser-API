@@ -21,10 +21,10 @@ const productSchema = new mongoose.Schema({
 );
 
 // Component index: supports "all products, newest first" pagination
-productSchema.index({ createdAt: -1 });
+productSchema.index({ createdAt: -1 , _id: -1});
 
 // component index: supports "product in category X, newest first" pagination
-productSchema.index({ category: 1, createdAt: -1});
+productSchema.index({ category: 1, createdAt: -1, _id: -1});
 
 
 module.exports = mongoose.model('Product', productSchema);
