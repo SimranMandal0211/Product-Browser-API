@@ -1,6 +1,6 @@
 function encodeCursor(product){
-    const payload = `${product.createdAt.toISOString()}_${product._id/toString()}`;
-    return Buffer.from(payload).toString('base64');
+    const payload = `${product.createdAt.toISOString()}_${product._id.toString()}`;
+  return Buffer.from(payload).toString('base64');
 }
 
 function decodeCursor(cursorString){

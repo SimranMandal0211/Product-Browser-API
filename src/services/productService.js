@@ -17,14 +17,16 @@ async function getProductsPage({ category, cursor, limit = 20 }){
     }
 
     const products = await Product.find(query)
-    .sort({ created: -1, _id: -1 })
+    .sort({ createdAt: -1, _id: -1 })
     .limit(limit + 1)
     .lean();
 
     const hasNextPage = products.length > limit;
     const pageItems = hasNextPage ? products.slice(0, limit) : products;
 
-    const nextCursot = hasNextPage ? encodeCursor(pageItems[pageItems.length - 1]) : null;
+    const nextCursor = hasNextPage
+  ? encodeCursor(pageItems[pageItems.length - 1])
+  : null;
 
     return {
         items: pageItems,
@@ -33,4 +35,4 @@ async function getProductsPage({ category, cursor, limit = 20 }){
     };
 }
 
-module.exports = { getProducctPage };
+module.exports = { getProductsPage };
